@@ -1,0 +1,14 @@
+/*------------------------------ Responsive --------------------------*/
+/* Large screen */
+@media screen and (min-width: 992px) {}
+
+/* Medium screen  */
+@media screen and (min-width: 768px) {}
+
+/* Small screen */
+@media screen and (min-width: 600px) {}
+
+/* Extra small */
+@media screen and (max-width: 600px) {}
+
+/*------------------------------ --------------------------*/
