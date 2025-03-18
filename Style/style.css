@@ -11,4 +11,11 @@
 /* Extra small */
 @media screen and (max-width: 600px) {}
 
-/*------------------------------ --------------------------*/
+/*------------------------------ Boutique --------------------------*/
+
+#card_boutique {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50%;
+}
