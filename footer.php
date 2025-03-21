@@ -2,12 +2,18 @@
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<footer>
+    <img src="Style/logo/insta_logo.png" alt="Instagram">
+    <a href="https://www.instagram.com/astral.ium/?hl=fr"></a>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>footer</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
+    <img src="Style/logo/fb_logo.png" alt="Facebook">
+    <a href="https://www.facebook.com/Astralium.creations.illustrations/"></a>
+
+    <img src="" alt="TikTok">
+    <a href="https://www.tiktok.com/@astralium"></a>
+
+</footer>
+<!--script java ici"-->
+</body>
+
+</html>
