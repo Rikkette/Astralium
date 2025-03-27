@@ -72,33 +72,33 @@ if (isset($_GET['delete'])) {
                                 <?= htmlentities($produits['categorie_nom']) ?></p>
 
                             <p class="card-text"><strong>Prix:</strong>
-                                        <?= number_format($produits['produits_prix'], 2) ?> € </p>
+                                <?= number_format($produits['produits_prix'], 2) ?> € </p>
 
-                                    <p class="card-text"><strong>Description:</strong>
-                                        <?= htmlentities($produits['produits_description']) ?></p>
+                            <p class="card-text"><strong>Description:</strong>
+                                <?= htmlentities($produits['produits_description']) ?></p>
 
-                                    <p class="card-text"><strong>Promotions</strong>
-                                        <?= htmlentities($produits['produits_promotions']) ?></p>
-                                        
-                                    <p class="card-text"><strong>Description:</strong>
-                                        <?= htmlentities($produits['produits_quantitees']) ?></p>
+                            <p class="card-text"><strong>Promotions</strong>
+                                <?= htmlentities($produits['produits_promotions']) ?></p>
 
-
+                            <p class="card-text"><strong>Description:</strong>
+                                <?= htmlentities($produits['produits_quantitees']) ?></p>
 
 
-                                    <!-- Bouton Ajouter au panier
+
+
+                            <!-- Bouton Ajouter au panier
                             <form action="ajoutpanier.php" method="POST" data-add-to-cart>
                                 <input type="hidden" name="action" value="ajouter">
                                 <input type="hidden" name="produit_id" value="<?= htmlspecialchars($product['produit_ID']) ?>">
                                 <button type="submit" class="btn btn-primary">Ajouter au panier</button>
                             </form> -->
 
-                                    <!-- Boutons Modifier et Supprimer si l'utilisateur est un admin ou commercial -->
-                                    <?php if ($Admin): ?>
-                                        <a class="btn btn-success" href="produit-select.php?modify=<?= htmlentities($produits['produits_id']) ?>">Modifier</a>
-                                        <a class="btn btn-danger" href="produits.php?delete=<?= htmlentities($produits['produits_id']) ?>"
-                                            onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')">Supprimer</a>
-                                    <?php endif; ?>
+                            <!-- Boutons Modifier et Supprimer si l'utilisateur est un admin ou commercial -->
+                            <?php if ($Admin): ?>
+                                <a class="btn btn-success" href="produit-select.php?modify=<?= htmlentities($produits['produits_id']) ?>">Modifier</a>
+                                <a class="btn btn-danger" href="produits.php?delete=<?= htmlentities($produits['produits_id']) ?>"
+                                    onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')">Supprimer</a>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

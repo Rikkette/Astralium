@@ -5,8 +5,8 @@ if (session_status() === PHP_SESSION_NONE) {
   session_start();
 }
 
-  // Récupération du nom du fichier PHP en cours sans extension
-  echo ucfirst(basename($_SERVER['PHP_SELF'], '.php'));
+// ---------Récupération du nom du fichier PHP en cours sans extension--------------
+echo ucfirst(basename($_SERVER['PHP_SELF'], '.php'));
 
 // -----------------------Configuration de la base de données-------------------------
 
@@ -23,23 +23,23 @@ try {
   die("Erreur de connexion : " . $e->getMessage());
 }
 
-  // Vérifiez si l'utilisateur est connecté
-  $username = null;
-  if (isset($_SESSION['users_id'])) {
-    $userId = $_SESSION['users_id'];
+// -------------Vérifiez si l'utilisateur est connecté---------
+$username = null;
+if (isset($_SESSION['users_id'])) {
+  $userId = $_SESSION['users_id'];
 
-    // Récupération des informations de l'utilisateur
-    $sqlUser = "SELECT * FROM users WHERE users_id=:users_id";
-    $stmtUser = $pdo->prepare($sqlUser);
-    $stmtUser->execute(['users_id' => $userId]);
-    $user = $stmtUser->fetch(PDO::FETCH_ASSOC);
+  // ------------Récupération des informations de l'utilisateur-------
+  $sqlUser = "SELECT * FROM users WHERE users_id=:users_id";
+  $stmtUser = $pdo->prepare($sqlUser);
+  $stmtUser->execute(['users_id' => $userId]);
+  $user = $stmtUser->fetch(PDO::FETCH_ASSOC);
 
-    if ($user) {
-      $username = $user['users_id'];
-    }
+  if ($user) {
+    $username = $user['users_id'];
   }
+}
 $Admin = isset($_SESSION['type_libelle']) && in_array($_SESSION['type_libelle'], ['admin']);
-$isLoggedIn=isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
+$isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
 
 ?>
 
@@ -56,8 +56,6 @@ $isLoggedIn=isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="Style/style.css">
 </head>
-<!---------------------------- Titre de la page----------------------------------------->
-
 
 <!-------------------------- Drapeau langue EN & FR ------------------------->
 <div class="banniereHeader">
@@ -65,15 +63,11 @@ $isLoggedIn=isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
     <img src="Style/logo/drap_en.png" width="40" height="30" alt="Anglais" class="drapeau-img" style="cursor: pointer;">
     <img src="Style/logo/drap_fr.png" width="40" height="30" alt="Français" class="drapeau-img" style="cursor: pointer;">
   </div>
- <img src="Style/logo/banniere header.png" class="banniere">
+  <img src="Style/logo/banniere.header.png" class="banniere">
 </div>
 
-<!-------------------------- Banniere Astralium ---------------------------->
-
-
-
+<!-------------------------- favicon Astralium ---------------------------->
 <!-------------------------- Nav bar bootstrap : barre de recherche ------------------------------>
-
 <nav class="navbar navbar-light bg-light">
   <form class="form-inline">
     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -84,7 +78,8 @@ $isLoggedIn=isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
 <!------------------------------ Nav Bar bootstrap :  ---------------------------->
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+    aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -119,13 +114,13 @@ $isLoggedIn=isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
       </li>
 
       <li></li>
-       <!-- Bouton Connexion/Déconnexion -->
-       <?php if ($isLoggedIn): ?>
-          <a href="logout.php" class="position">Déconnexion</a>
-        <?php else: ?>
-          <a href="login.php" class="position">Connexion</a>
-        <?php endif; ?>
-        </li>
+      <!-- Bouton Connexion/Déconnexion -->
+      <?php if ($isLoggedIn): ?>
+        <a href="logout.php" class="position">Déconnexion</a>
+      <?php else: ?>
+        <a href="login.php" class="position">Connexion</a>
+      <?php endif; ?>
+      </li>
 
     </ul>
   </div>
