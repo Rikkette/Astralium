@@ -1,59 +1,192 @@
 /*------------------------------ Responsive --------------------------*/
-/* Large screen */
-@media screen and (min-width: 992px) {}
+/*évolution de ma responsive pour qu'elle s'adapte au plus d'écrans possible on parle alros de mobile first */
 
-/* Medium screen  */
-@media screen and (min-width: 768px) {}
+body {
+  font-size: 14px;
+}
 
-/* Small screen */
-@media screen and (min-width: 600px) {}
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
 
-/* Extra small */
-@media screen and (max-width: 600px) {}
+img,
+table {
+  max-width: 100%;
+  height: auto;
+}
 
-/*------------------------------ header ------------------------------*/
+/* --------------------------- Extra small ----------------------------*/
+@media screen and (max-width: 600px) {
+  body {
+    font-size: 16px;
+    /* Texte plus grand pour la lisibilité sur mobile */
+  }
+
+  .container {
+    width: 95%;
+    /* Plus d'espace utilisé sur petit écran */
+  }
+
+  h1 {
+    font-size: 24px;
+    /* Titres plus petits sur mobile */
+  }
+
+  .menu {
+    flex-direction: column;
+    /* Menu empilé sur mobile */
+  }
+
+  .button {
+    padding: 12px 20px;
+    /* Boutons plus grands pour être facilement cliquables */
+    width: 100%;
+    /* Boutons pleine largeur sur mobile */
+  }
+}
+
+/* --------------------------Small screen---------------------*/
+@media screen and (min-width: 600px) and (max-width: 767px) {
+  /* Styles spécifiques pour petites tablettes */
+}
+
+/* ------------------------------Medium screen-------------------*/
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  /* Styles spécifiques pour tablettes */
+}
+
+/* -------------------------------Large screen-----------------*/
+@media screen and (min-width: 992px) {
+  /* Styles spécifiques pour ordinateurs */
+}
+
+/*------------------------------ header -----------------------------*/
 .banniereHeader {
-    position: relative;
-    width: 100%;
+  position: relative;
+  width: 100%;
 }
 
+/*------------------------------ header Drapeau----------------------*/
 .drapeau {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    display: flex;
-    gap: 5px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  gap: 5px;
 }
 
-.banniere  {
-    width: 100%;
-    display: block;
+.banniere {
+  width: 100%;
+  display: block;
 }
 
 .drapeau-img {
-    width: 30px;
-    height: auto;
+  width: 30px;
+  height: auto;
 }
 
-/*------------------------------ footer--------------------------------*/
+/*------------------------------ header caddie------------------------------*/
+.caddie {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 5px;
+}
 
+/*---------------------------barre de recherche bootstrap header -----------------*/
 
+.form-inline {
+  position: absolute;
+  top: 105px;
+  left: 10px;
+  display: flex;
+  gap: 5px;
+}
+
+/*------------------------------ navbar header--------------------------------*/
+.navbar navbar-expand-lg navbar-light bg-light {
+  background-color: #fff;
+  padding: 0 20px;
+  border-radius: 40px;
+  box-shadow: 0 10px 40px rgb(184, 81, 180);
+  display: flex;
+  overflow: hidden;
+  overflow-x: auto;
+  position: relative;
+}
+/*------------------------------ Index --------------------------*/
+
+.div banniere_index {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /*------------------------------ Boutique --------------------------*/
 .boutique-container {
-    display: flex;
-    gap : 10px;
-    justify-content: space-around;
+  display: flex;
+  gap: 10px;
+  justify-content: space-around;
 }
 
 #card_boutique {
-    display: flex;
-    height: 80px;
-    width : 40px;
-    flex: 1 0 140px;
+  display: flex;
+  height: 80px;
+  width: 40px;
+  flex: 1 0 140px;
 
 }
 
-.titre {
-    justify-content: center;
+.titre_boutique {
+  display: flex;
+  justify-content: center;
+}
+
+
+/*----------------Portefolio-------------------*/
+.titre_portefolio {
+  display: flex;
+  justify-content:center
+}
+
+/*----------------A propos-------------------*/
+.titre_a_propos {
+  display: flex;
+  justify-content:center
+}
+
+/*----------------blog -------------------*/
+.titre_blog {
+  display: flex;
+  justify-content:center
+}
+
+/*--------------------------- Footer --------------------------*/
+#rectangle {
+  width  : 100%;
+  height : 300px;
+  background :rgba(219,236,255,255)
+}
+
+.icone {
+  display: flex;
+  right: 10px;
+  position: absolute;
+  margin-top: 60px;
+}
+
+.titre_reseaux {
+  display: flex;
+  right: 100px;
+  position: absolute;
+  margin-top: 10px;
+}
+
+.titre_mention_legale {
+  display: flex;
+  justify-content:center;
+  margin-top: 90px;
+  cursor: pointer;
 }

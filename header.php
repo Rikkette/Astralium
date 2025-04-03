@@ -6,6 +6,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 // ---------Récupération du nom du fichier PHP en cours sans extension--------------
+
 echo ucfirst(basename($_SERVER['PHP_SELF'], '.php'));
 
 // -----------------------Configuration de la base de données-------------------------
@@ -42,6 +43,7 @@ $Admin = isset($_SESSION['type_libelle']) && in_array($_SESSION['type_libelle'],
 $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
 
 ?>
+<!---------------------------------------html--------------------------------------------->
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -55,25 +57,30 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="Style/style.css">
+  <!-------------------------- favicon Astralium --------------------------------------------------->
+  <link rel="icon" type="image/png" sizes="32x32" href="/Style/logo/favicon_lune.png">
 </head>
 
 <!-------------------------- Drapeau langue EN & FR ------------------------->
+
 <div class="banniereHeader">
   <div class="drapeau">
-    <img src="Style/logo/drap_en.png" width="40" height="30" alt="Anglais" class="drapeau-img" style="cursor: pointer;">
-    <img src="Style/logo/drap_fr.png" width="40" height="30" alt="Français" class="drapeau-img" style="cursor: pointer;">
+    <img src="Style/logo/drapeau_en.png" width="40" height="30" alt="Anglais" class="drapeau-img" style="cursor: pointer;">
+    <img src="Style/logo/drapeau_fr.png" width="40" height="30" alt="Français" class="drapeau-img" style="cursor: pointer;">
   </div>
+  <!-------------------------- caddie logo ------------------------->
+  <div class="caddie">
+    <img src="Style/logo/sac_logo.png" width="150" height="80" alt="caddie logo" class="caddie-img" style="cursor: pointer;">
+  </div>
+  <!-------------------------- Nav bar bootstrap : barre de recherche ------------------------------>
+  <nav class="navbar navbar-light bg-light">
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </nav>
   <img src="Style/logo/banniere.header.png" class="banniere">
 </div>
-
-<!-------------------------- favicon Astralium ---------------------------->
-<!-------------------------- Nav bar bootstrap : barre de recherche ------------------------------>
-<nav class="navbar navbar-light bg-light">
-  <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-  </form>
-</nav>
 
 <!------------------------------ Nav Bar bootstrap :  ---------------------------->
 
@@ -82,8 +89,9 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
+  <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+    <ul class="navbar-nav mx-auto">
+
       <!--------------- Accueil ---------------->
       <li class="nav-item">
         <a class="nav-link" href="index.php">Accueil</a>
@@ -96,25 +104,24 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
       <li class="nav-item">
         <a class="nav-link" href="portfolio.php">Portfolio</a>
       </li>
-      <!--------------- A propos --------------->
+      <!---------------- A propos ---------------->
       <li class="nav-item">
         <a class="nav-link" href="apropos.php">À propos</a>
       </li>
-      <!----------------- blog ---------------->
+      <!------------------- blog ----------------->
       <li class="nav-item">
         <a class="nav-link" href="blog.php">Blog</a>
       </li>
-      <!--------------- newsletter -------------->
+      <!----------------- newsletter --------------->
       <li class="nav-item">
         <a class="nav-link" href="#">NewsLetter</a>
       </li>
-      <!--------------- Me contacter -------------->
+      <!------------------------ Me contacter --------------->
       <li class="nav-item">
         <a class="nav-link" href="#">Me contacter</a>
       </li>
 
-      <li></li>
-      <!-- Bouton Connexion/Déconnexion -->
+      <!----------------- Bouton Connexion/Déconnexion ----->
       <?php if ($isLoggedIn): ?>
         <a href="logout.php" class="position">Déconnexion</a>
       <?php else: ?>

@@ -13,6 +13,10 @@ include "header.php";
 </head>
 <body>
 
+<h1 class="titre_portefolio">
+    Bienvenue sur mon Portfolio
+</h1>
+
 <div class="grid">
     <div>
         <img src="">

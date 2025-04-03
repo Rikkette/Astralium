@@ -14,15 +14,15 @@ include "header.php";
 </head>
 
 <body>
-    <header>
 
-    </header>
-    <main>
 
-    </main>
-    <footer>
+    <div>
+        <img src="/Style/photo_illu/banniere_index.png" alt="banniere index" class="banniere_index">
+    </div>
 
-    </footer>
-</body>
+    <?php
+    include "footer.php";
+    ?>
 
 </html>
+</body>

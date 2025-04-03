@@ -1,79 +1,134 @@
 <?php
 include("header.php");
 
-if (!$Admin) {
+// Uniquement si on est grade "admin" sinon la personne est renvoyée vers l'index
+if (!isset($Admin) || !$Admin) {
     header("Location: index.php");
     exit;
 }
 
-
-// Création d'un tableau categories avec une requête SQL recherchant les ids et libelles de la table categorie 
-$categories = [];
+// Récupération des catégories depuis la base de données
 $categories = $pdo->query("SELECT * FROM categories")->fetchAll();
 
-// Si la méthode POST s'active, on définit les différent variables pour les relier aux valeur de name dans le formulaire
+// Traitement du formulaire lors de la soumission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $libelle = $_POST['produit_nom'];
-    $prix = $_POST['produits_prix'];
-    $description = $_POST['produits_description'];
-    $categorie = $_POST['categorie_nom'];
-    $promotions = $_POST['produits_promotions'];
-    $quantitees = $_POST['produits_quantitees'];
+    // Récupération et validation des données du formulaire
+    $libelle = trim($_POST['produit_nom']);
+    $description = trim($_POST['produits_description']);
+    $prix = floatval($_POST['produits_prix']);
+    $promotions = trim($_POST['produits_promotions']);
+    $quantitees = intval($_POST['produits_quantitees']);
+    $categorie = isset($_POST['categorie']) ? intval($_POST['categorie']) : null;
 
-        $stmt = $pdo->prepare("INSERT INTO produits (produits_nom, produits_description ,produits_prix, produits_promotions, produits_quantitees, categorie_id) 
-        VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->execute([$libelle, $prix, $description, $categorie, $promotions, $quantitees]);
+    // Vérification de l'existence de la catégorie
+    $check = $pdo->prepare("SELECT COUNT(*) FROM categories WHERE categorie_id = ?");
+    $check->execute([$categorie]);
+    if ($check->fetchColumn() == 0) {
+        $message = "Erreur : La catégorie sélectionnée n'existe pas.";
+    } else {
+        // Insertion du produit dans la base de données
+        $stmt = $pdo->prepare("INSERT INTO produits (produits_nom, produits_description, produits_prix, produits_promotions, produits_quantitees, categorie_id) 
+            VALUES (:nom, :description, :prix, :promotions, :quantitees, :categorie)");
+        $stmt->execute([
+            ':nom' => $libelle,
+            ':description' => $description,
+            ':prix' => $prix,
+            ':promotions' => $promotions,
+            ':quantitees' => $quantitees,
+            ':categorie' => $categorie,
+        ]);
 
-    // Redirection vers la page produit.php après modification ou création
-    header('Location: boutique.php');
-    exit;
+        // Récupération de l'ID du produit inséré
+        $nouveau_produit_id = $pdo->lastInsertId();
+
+        // Traitement des images
+        if (!empty($_FILES['produit_image']) && $_FILES['produit_image']['error'] === UPLOAD_ERR_OK) {
+            $uploads_dir = 'uploads/';
+            $tmp_name = $_FILES['produit_image']['tmp_name'];
+            $filename = uniqid() . '_' . basename($_FILES['produit_image']['name']);
+            $file_path = $uploads_dir . $filename;
+
+            if (move_uploaded_file($tmp_name, $file_path)) {
+                // Insertion des informations de l'image dans la base de données
+                $sql = "INSERT INTO produit_images (image_nom, produit_id) VALUES (:image_nom, :produit_id)";
+                $request = $pdo->prepare($sql);
+                $request->execute([
+                    ':image_nom' => $filename,
+                    ':produit_id' => $nouveau_produit_id
+                ]);
+            }
+        }
+
+        // Redirection vers la page des produits après création
+        header('Location: produits.php');
+        exit;
+    }
 }
 ?>
 
-<!-- Formulaire qui indique si on modifie ou créer un produit selon si l'id récupéré existe-->
+<!-------------------------- Formulaire de création d'un produit ----------------------------->
 <div class="container my-5">
     <h1 class="mb-4">Création d'un produit</h1>
 
-    <form method="post">
+    <?php if (isset($message)): ?>
+        <div class="alert alert-danger"><?= htmlentities($message) ?></div>
+    <?php endif; ?>
+
+    <form method="post" enctype="multipart/form-data">
         <div class="mb-3">
-            <!-- <label for="image" class="form-label">Image du produit: </label>
-            <input type="file" class="form-control" id="image" name="produit_image" value=""> -->
+            <!--Ici j'ajoute une image pour illustrer le produit -->
+            <label for="produit_image" class="form-label">Image du produit: </label>
+            <input type="file" class="form-control" id="produit_image" name="produit_image">
+        </div>
 
-            <label for="libelle" class="form-label">Nom du produit: </label>
-            <input type="text" class="form-control" id="libelle" name="produit_nom" required>
+        <div class="mb-3">
+            <!--Nom du produit -->
+            <label for="produit_nom" class="form-label">Nom du produit: </label>
+            <input type="text" class="form-control" id="produit_nom" name="produit_nom" required>
+        </div>
 
+        <div class="mb-3">
+            <!--Catégorie du produit -->
             <label for="categorie" class="form-label">Catégorie du produit: </label>
-            <select name="categorie" class="form-select" id="categorie">
+            <select name="categorie" class="form-select" id="categorie" required>
+                <option value="">Sélectionner une catégorie</option>
                 <?php foreach ($categories as $categorieValue): ?>
-                    <option value="<?= $categorieValue['categorie_id']?>">
+                    <option value="<?= htmlentities($categorieValue['categorie_id']) ?>">
                         <?= htmlentities($categorieValue['categorie_nom']) ?>
                     </option>
-                <?php endforeach ?>
+                <?php endforeach; ?>
             </select>
-
-
-            <label for="prix" class="form-label">Prix du produit: </label>
-            <input type="text" class="form-control" id="prix" name="produits_prix" required>
-
-            <label for="description" class="form-label">Description du produit: </label>
-            <input type="text" class="form-control" id="description" name="produits_description" required>
-
-            <label for="description" class="form-label">promotions: </label>
-            <input type="text" class="form-control" id="promotions" name="produits_promotions" required>
-
-            <label for="description" class="form-label">Quantitées </label>
-            <input type="text" class="form-control" id="description" name="produits_quantitees" required>
-
         </div>
-        <!-- Si l'id du produit existe, on met une valeur cachée pour l'id dans le formulaire pour que le formulaire ne se recharge pas lors du retour à 
-         la page produits.php-->
-        <input type="hidden" name="id">
 
-        <button type="submit" class="btn btn-warning">créer</button>
+        <div class="mb-3">
+            <!--Prix du produit -->
+            <label for="produits_prix" class="form-label">Prix du produit (€): </label>
+            <input type="number" step="0.01" class="form-control" id="produits_prix" name="produits_prix" required>
+        </div>
+
+        <div class="mb-3">
+            <!--Description du produit -->
+            <label for="produits_description" class="form-label">Description du produit: </label>
+            <textarea class="form-control" id="produits_description" name="produits_description" rows="3" required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <!--Promotions -->
+            <label for="produits_promotions" class="form-label">Promotions: </label>
+            <input type="text" class="form-control" id="produits_promotions" name="produits_promotions">
+        </div>
+
+        <div class="mb-3">
+            <!--Quantité disponible -->
+            <label for="produits_quantitees" class="form-label">Quantité disponible: </label>
+            <input type="number" min="0" class="form-control" id="produits_quantitees" name="produits_quantitees" required>
+        </div>
+
+        <button type="submit" class="btn btn-warning">Créer le produit</button>
         <a href="produits.php" class="btn btn-dark">Retour</a>
     </form>
 </div>
 
-<?PHP
+<?php
 include("footer.php");
 ?>
