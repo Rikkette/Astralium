@@ -1,3 +1,4 @@
+<!-------->
 <?php
 include "header.php";
 ?>
@@ -16,3 +17,7 @@ include "header.php";
 <h1 class="titre_blog">
     Bienvenue sur mon Blog !
 </h1>
+
+<?php
+include "footer.php";
+?>

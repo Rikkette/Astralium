@@ -64,7 +64,7 @@ if (isset($_GET['delete'])) {
                 <div class="col mb-5">
                     <div class="card h-100">
                         <!-- Product image-->
-                        <img class="card-img-top" src="uploads/<?= htmlentities($produit['media']) ?>" alt="Photo du produit" />
+                        <img class="card-img-top" src="uploads/<?= htmlentities($produit['media_libelle']) ?>" alt="Photo du produit" />
                         <!-- Product details-->
                         <div class="card-body m-4">
                             <div class="text-center">

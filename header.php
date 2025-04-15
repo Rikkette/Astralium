@@ -57,6 +57,12 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="Style/style.css">
+
+  <!--------------------- bibliothèque Javascript "Fancybox" ------------------------------------->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
   <!-------------------------- favicon Astralium --------------------------------------------------->
   <link rel="icon" type="image/png" sizes="32x32" href="/Style/logo/favicon_lune.png">
 </head>
@@ -83,52 +89,54 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
 </div>
 
 <!------------------------------ Nav Bar bootstrap :  ---------------------------->
+<nav class="custom-nav">
+  <nav class="navbar navbar-expand-lg navbar-lightbg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+      <ul class="navbar-nav mx-auto">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
-    aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
-    <ul class="navbar-nav mx-auto">
+        <!--------------- Accueil ---------------->
+        <li class="nav-item">
+          <a class="nav-link" href="index.php">Accueil</a>
+        </li>
+        <!--------------- Boutique --------------->
+        <li class="nav-item">
+          <a class="nav-link" href="produits.php">Boutique</a>
+        </li>
+        <!--------------- Portfolio -------------->
+        <li class="nav-item">
+          <a class="nav-link" href="portfolio.php">Portfolio</a>
+        </li>
+        <!---------------- A propos ---------------->
+        <li class="nav-item">
+          <a class="nav-link" href="apropos.php">Qui suis-je ?</a>
+        </li>
+        <!------------------- blog ----------------->
+        <li class="nav-item">
+          <a class="nav-link" href="blog.php">Blog</a>
+        </li>
+        <!----------------- newsletter --------------->
+        <li class="nav-item">
+          <a class="nav-link" href="newsletter.php">NewsLetter</a>
+        </li>
+        <!------------------------ Me contacter --------------->
+        <li class="nav-item">
+          <li class="nav-item">
+        <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">Me Contacter</a>
+        </li>
 
-      <!--------------- Accueil ---------------->
-      <li class="nav-item">
-        <a class="nav-link" href="index.php">Accueil</a>
-      </li>
-      <!--------------- Boutique --------------->
-      <li class="nav-item active">
-        <a class="nav-link" href="produits.php">Boutique</a>
-      </li>
-      <!--------------- Portfolio -------------->
-      <li class="nav-item">
-        <a class="nav-link" href="portfolio.php">Portfolio</a>
-      </li>
-      <!---------------- A propos ---------------->
-      <li class="nav-item">
-        <a class="nav-link" href="apropos.php">À propos</a>
-      </li>
-      <!------------------- blog ----------------->
-      <li class="nav-item">
-        <a class="nav-link" href="blog.php">Blog</a>
-      </li>
-      <!----------------- newsletter --------------->
-      <li class="nav-item">
-        <a class="nav-link" href="#">NewsLetter</a>
-      </li>
-      <!------------------------ Me contacter --------------->
-      <li class="nav-item">
-        <a class="nav-link" href="#">Me contacter</a>
-      </li>
+        <!----------------- Bouton Connexion/Déconnexion ----->
+        <?php if ($isLoggedIn): ?>
+          <a href="logout.php" class="position">Déconnexion</a>
+        <?php else: ?>
+          <a href="login.php" class="position">Connexion</a>
+        <?php endif; ?>
+        </li>
 
-      <!----------------- Bouton Connexion/Déconnexion ----->
-      <?php if ($isLoggedIn): ?>
-        <a href="logout.php" class="position">Déconnexion</a>
-      <?php else: ?>
-        <a href="login.php" class="position">Connexion</a>
-      <?php endif; ?>
-      </li>
-
-    </ul>
-  </div>
+      </ul>
+    </div>
+  </nav>
 </nav>

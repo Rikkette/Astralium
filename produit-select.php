@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="mb-3">
             <!--Ici j'ajoute une image pour illustrer le produit -->
             <label for="produit_image" class="form-label">Image du produit: </label>
-            <input type="file" class="form-control" id="produit_image" name="produit_image">
+            <input type="file" class="form-control" id="produit_image" name="produit_image" multiple required>
         </div>
 
         <div class="mb-3">

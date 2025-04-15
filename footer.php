@@ -2,7 +2,9 @@
 
     <div class="mentions-container">
         <p class="mention_legale">Mentions légales</p>
+
         <p class="condition_generale_vente">Conditions Générales de Vente</p>
+
     </div>
 
 

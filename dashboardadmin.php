@@ -14,3 +14,6 @@ Bienvenue sur ton Dashbord Marion
 </h1>
 
 
+<?php
+include "footer.php";
+?>
