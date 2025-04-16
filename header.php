@@ -120,19 +120,18 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
         </li>
         <!----------------- newsletter --------------->
         <li class="nav-item">
-          <a class="nav-link" href="newsletter.php">NewsLetter</a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#newsletterModal"> Newsletter </a>
         </li>
-        <!------------------------ Me contacter --------------->
+        <!------------------------ Me contacter modale via bootstrap--------------->
         <li class="nav-item">
-          <li class="nav-item">
-        <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">Me Contacter</a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#contactModal"> Me contacter </a>
         </li>
 
         <!----------------- Bouton Connexion/Déconnexion ----->
         <?php if ($isLoggedIn): ?>
-          <a href="logout.php" class="position">Déconnexion</a>
+          <a href="logout.php" class="position"> Déconnexion </a>
         <?php else: ?>
-          <a href="login.php" class="position">Connexion</a>
+          <a href="login.php" class="position"> Connexion </a>
         <?php endif; ?>
         </li>
 
@@ -140,3 +139,91 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
     </div>
   </nav>
 </nav>
+
+
+<!----------------------------------- Modal : me contacter sur la barre de navigation via bootstrap ---------------------------------------->
+<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="contactModalLabel">Me contacter</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+      </div>
+      <div class="modal-body">
+
+        <!--------------------- le formulaire de contact --------------------->
+        <form>
+        <!------------------- Le Nom ------------------------>
+          <div class="mb-3">
+            <label for="nom" class="form-label">Nom</label>
+            <input type="text" class="form-control" id="nom">
+          </div>
+         <!-------------------- L'email ---------------------->
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email">
+          </div>
+          <!---------------------- Le Message --------------------->
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" rows="3"></textarea>
+          </div>
+
+        </form>
+
+      </div>
+       <!-------------------- Bouton Fermer/Envoyer --------------------->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        <button type="button" class="btn btn-primary">Envoyer</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<!----------------------------------- Modal : me Newsletter sur la barre de navigation via bootstrap ---------------------------------------->
+<div class="modal fade" id="newsletterModal" tabindex="-1" aria-labelledby="newsletterModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-----------------------------------titre de la modale -------------------------------------->
+      <div class="modal-header">
+        <h5 class="modal-title" id="newsletterModalLabel">Inscription à la newsletter</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+      </div>
+
+      <div class="modal-body">
+        <p>Inscrivez-vous pour recevoir mes dernières actualités et créations.</p>
+
+        <!------------------------------- Formulaire Newsletter --------------------------------------->
+        <form>
+          <!---------------------------------- Le Nom ------------------------------------------------->
+          <div class="mb-3">
+            <label for="newsletterNom" class="form-label">Nom</label>
+            <input type="text" class="form-control" id="newsletterNom">
+          </div>
+          <!---------------------------------- L'email -------------------------------------------------->
+          <div class="mb-3">
+            <label for="newsletterEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="newsletterEmail" required>
+          </div>
+         <!-------------- la check box pour accepter de recevoir les emails de newsletter----------------->
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="rgpdCheck" required>
+            <label class="form-check-label" for="rgpdCheck">J'accepte de recevoir la newsletter et j'ai lu la politique de confidentialité</label>
+          </div>
+
+        </form>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+        <button type="button" class="btn btn-primary">S'inscrire</button>
+      </div>
+
+    </div>
+  </div>
+</div>

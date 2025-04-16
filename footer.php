@@ -1,9 +1,9 @@
 <footer>
 
     <div class="mentions-container">
-        <p class="mention_legale">Mentions légales</p>
+        <a href="mentions_legales.php" class="mention_legale">Mentions légales</a>
 
-        <p class="condition_generale_vente">Conditions Générales de Vente</p>
+        <a href="conditions_generales_de_vente.php" class="condition_generale_vente">Conditions Générales de Vente</a>
 
     </div>
 
@@ -45,7 +45,7 @@
         <img src="/Style/logo/logo.png" alt="logo Astralium" class="logoAstra" width="100" height="100">
     </div>
 
-    <button class="button" type="button">Je m'abonne!</button>
+    <button class="button" type="button" data-bs-toggle="modal" data-bs-target="#newsletterModal">Je m'abonne!</button>
 
     <div id="rectangle" class="rectangle"></div>
     
