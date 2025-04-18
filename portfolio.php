@@ -1,3 +1,5 @@
+<!------Page portefolio ou gallery pour presenter le travail d'illustration de marion aux internautes ------->
+
 <?php
 include "header.php";
 ?>

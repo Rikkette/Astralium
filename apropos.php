@@ -21,6 +21,8 @@ include "header.php";
 <div class="presentation">
 <img src="/uploads/marion.jpg" width="500" height="500"/>
 
+<!--Présentation ecrite de l'illustratrice-->
+
 <p class="paragraphe">
 <h2> ✧ Astralium est l’art de l’astrologie ✧ <br>
 

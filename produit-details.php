@@ -1,31 +1,7 @@
-<!------ page pour voir tout les produits en détail ave  description -------->
+<!------ page pour voir tout les produits en détail avec description -------->
 <?php
 include "header.php";
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <?php

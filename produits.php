@@ -1,7 +1,6 @@
 <?php
 include 'header.php';
 
-
 // Initialisation des variables
 $search = isset($_GET['searchCat']) ? $_GET['searchCat'] : '';
 $category = isset($_GET['category']) ? $_GET['category'] : '';
@@ -55,7 +54,7 @@ if (isset($_GET['delete'])) {
 <h1 class="titre_boutique">
     Bienvenue sur ma Boutique
 </h1>
-
+<!------------------------------------------------- partie bootstrap produit card ---------------------------------->
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <p class="text-center text-bg-danger"><?php if (isset($message)) echo $message; ?></p>
@@ -63,21 +62,21 @@ if (isset($_GET['delete'])) {
             <?php foreach ($produits as $produit): ?>
                 <div class="col mb-5">
                     <div class="card h-100">
-                        <!-- Product image-->
+                        <!-- image du produit-->
                         <img class="card-img-top" src="uploads/<?= htmlentities($produit['media_libelle']) ?>" alt="Photo du produit" />
-                        <!-- Product details-->
+                        <!-- detail du produit -->
                         <div class="card-body m-4">
                             <div class="text-center">
-                                <!-- Product name-->
+                                <!-- nom du produit-->
                                 <h5 class="fw-bolder"><?= htmlentities($produit['produits_nom']) ?></h5>
                                 <?= htmlentities($produit['nombre_pieces'] ?? '') ?> pièces.
                                 <br>
                                 <hr>
-                                <!-- Product price-->
+                                <!-- prix du produit -->
                                 <?= number_format($produit['produits_prix'], 2) ?> €.
                             </div>
                         </div>
-                        <!-- Product actions-->
+                        <!-- action du produit -->
                         <div class="card-footer m-4 pt-0 border-top-0 bg-transparent">
                             <div class="text-center">
                                 <a class="btn btn-outline-dark mt-auto" href="produit-details.php?id=<?= htmlentities($produit['produits_id']) ?>">En savoir plus</a>

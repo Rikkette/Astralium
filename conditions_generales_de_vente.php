@@ -1,3 +1,5 @@
+<!----------- Page qui envoie vers les conditions générale de vente dans le footer --------> 
+
 <?php
 include "header.php";
 ?>

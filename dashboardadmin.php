@@ -1,3 +1,6 @@
+<!-----------Page Dashboard du site de marion ou elle pourra y gerer plusieur choses : categorie/ produit/ prix/ image / blog/ colorimetrie du site --------> 
+
+
 <?php
 ?>
 <!DOCTYPE html>
@@ -10,7 +13,7 @@
 </html>
 
 <h1 class="titre"> 
-Bienvenue sur ton Dashbord Marion
+Bienvenue sur ton Dashbord Marion 
 </h1>
 
 

@@ -1,3 +1,5 @@
+<!----------- Page d'acceuil du site presentatyion des dernieres nouveautés mise dans le shop, --------> 
+
 <?php
 include "header.php";
 ?>
@@ -12,14 +14,14 @@ include "header.php";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Accueil</title>
 </head>
-
+<!--------- banniere d'agrement pour illustré la page d'acceuil ----------> 
 <body>
     <div class="banniere-container">
         <div>
             <img src="/Style/photo_illu/banniere_index.png" class="banniere_index">
         </div>
     </div>
-
+<!-----------Partie PHP Select * from pour afficher les produits --------> 
     <?php
     $sql = "SELECT p.* FROM produits p ORDER BY produits_id DESC LIMIT 4";
     $stmt = $pdo->prepare($sql);
@@ -27,6 +29,7 @@ include "header.php";
     $derniers_produits = $stmt->fetchAll(PDO::FETCH_ASSOC);
     ?>
 
+<!----------------------- partie bootstrap pour afficher les produit sur la page d'accueil ---------------------------> 
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <h2 class="mb-4">Nos dernières nouveautés</h2>
@@ -34,16 +37,16 @@ include "header.php";
             <?php foreach ($derniers_produits as $produit): ?>
                 <div class="col mb-5">
                     <div class="card h-100">
-                        <!-- Product image -->
+                        <!-- image du Produit -->
                         <img class="card-img-top" src="uploads/default.jpg" alt="Photo du produit" />
                         
-                        <!-- Product details -->
+                        <!-- détail du Produit -->
                         <div class="card-body m-4">
                             <div class="text-center">
-                                <!-- Product name -->
+                                <!-- nom du Produit -->
                                 <h5 class="fw-bolder"><?= htmlentities($produit['produits_nom']) ?></h5>
                                 <hr>
-                                <!-- Product price -->
+                                <!-- Prix du Produit -->
                                 <?= number_format($produit['produits_prix'], 2) ?> €
                             </div>
                         </div>
@@ -58,9 +61,11 @@ include "header.php";
                 </div>
             <?php endforeach; ?>
         </div>
+         <!--------- cette partie et relier a un bouton qui renvoie vers la boutique ----------> 
         <div class="text-center mt-4">
             <a class="btn btn-primary" href="produits.php">Voir tous nos produits</a>
         </div>
+
     </div>
 </section>
 

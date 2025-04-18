@@ -1,4 +1,4 @@
-<!---ici le panier pour y mettre totu les élèment lors de l'achat --->
+<!--- Page panier pour y mettre tout les produits lors de l'achat --->
 
 <?php
 
@@ -10,6 +10,8 @@ session_start();
 if (!isset($_SESSION['Panier'])) {
     $_SESSION['Panier'] = [];
 }
+
+?>
 
 
 

@@ -1,3 +1,5 @@
+<!----- Header qui regroupe la barre de recherche, la navbarre de naviagation, panier, traduction, connextion user/admin, newsletter,contacte marion ------> 
+
 <?php
 //-----------------------------je lance la session ---------------------------
 

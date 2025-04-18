@@ -1,4 +1,4 @@
-<!-------->
+<!---- création d'une partie blog sur le site internet d'Astralium ---->
 <?php
 include "header.php";
 ?>

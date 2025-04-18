@@ -1,3 +1,4 @@
+<!-----------Footer bas de page qui regroupe les réseaux sociaux + CGV + ML + newsletter --------> 
 <footer>
 
     <div class="mentions-container">
@@ -6,7 +7,6 @@
         <a href="conditions_generales_de_vente.php" class="condition_generale_vente">Conditions Générales de Vente</a>
 
     </div>
-
 
     <h5 class="titre_reseaux">
         Mes Réseaux

@@ -1,5 +1,5 @@
-<!-----------Page catégorie qui permet de créé des catégories pour les
- differents produits du site web --------> 
- <!-----Modal ? ou rediriger vers le dashboard ?------>
+<!-----------Page catégorie : qui permet de créé des catégories de les supprimez (CRUD) --------> 
+<!-----pour le dashboard ------>
 <?php
+
 ?>

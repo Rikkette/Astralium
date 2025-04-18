@@ -1,3 +1,5 @@
+<!--- Page qui envoie vers les Mention Légales dans le footer -->
+
 <?php
 include "header.php";
 ?>

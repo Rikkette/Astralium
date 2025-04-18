@@ -1,7 +1,9 @@
+<!---Page pour afficher les produit dans le shop avec les categories mais aussi pour ajouter des produit via formulaire-->
+
 <?php
 include("header.php");
 
-// Uniquement si on est grade "admin" sinon la personne est renvoyée vers l'index
+// Uniquement si on est grade "admin" si non la personne est renvoyée vers l'index
 if (!isset($Admin) || !$Admin) {
     header("Location: index.php");
     exit;
@@ -124,6 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <input type="number" min="0" class="form-control" id="produits_quantitees" name="produits_quantitees" required>
         </div>
 
+        <!--bouton pour soumettre le formulaire d'ajout de produit -->
         <button type="submit" class="btn btn-warning">Créer le produit</button>
         <a href="produits.php" class="btn btn-dark">Retour</a>
     </form>
