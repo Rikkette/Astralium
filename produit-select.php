@@ -77,6 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <?php endif; ?>
 
     <form method="post" enctype="multipart/form-data">
+        
         <div class="mb-3">
             <!--Ici j'ajoute une image pour illustrer le produit -->
             <label for="produit_image" class="form-label">Image du produit: </label>

@@ -7,10 +7,6 @@ if (session_status() === PHP_SESSION_NONE) {
   session_start();
 }
 
-// ---------Récupération du nom du fichier PHP en cours sans extension--------------
-
-echo ucfirst(basename($_SERVER['PHP_SELF'], '.php'));
-
 // -----------------------Configuration de la base de données-------------------------
 
 $host = '127.0.0.1';

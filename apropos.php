@@ -19,23 +19,22 @@ include "header.php";
 </h1>
 
 <div class="presentation">
-<img src="/uploads/marion.jpg" width="500" height="500"/>
+    <img src="/uploads/marion.jpg" width="500" height="500" />
 
-<!--Présentation ecrite de l'illustratrice-->
+    <!--Présentation ecrite de l'illustratrice-->
 
-<p class="paragraphe">
-<h2> ✧ Astralium est l’art de l’astrologie ✧ <br>
+    <p class="paragraphe">
+    <h2> ✧ Astralium est l’art de l’astrologie ✧ <br>
 
-Bonjour, je suis Marion, illustratrice et créatrice indépendante, éternelle rêveuse avec la tête dans les étoiles.<br>
-Mon univers puise son inspiration dans les astres, l’ésotérisme, la spiritualité et les mondes imaginaires.<br>
-À travers mes illustrations et mes créations poétiques, je cherche à faire résonner ces énergies subtiles, et à vous inviter dans un voyage hors du temps.<br>
-Astralium est né de l’envie profonde de relier l’art à l’astrologie, ces deux magies qui m’accompagnent depuis l’enfance.<br>
-Entre ciel et terre, je vous ouvre les portes d’un lieu magique et céleste.
-</h2>
-</p>
+        Bonjour, je suis Marion, illustratrice et créatrice indépendante, éternelle rêveuse avec la tête dans les étoiles.<br>
+        Mon univers puise son inspiration dans les astres, l’ésotérisme, la spiritualité et les mondes imaginaires.<br>
+        À travers mes illustrations et mes créations poétiques, je cherche à faire résonner ces énergies subtiles, et à vous inviter dans un voyage hors du temps.<br>
+        Astralium est né de l’envie profonde de relier l’art à l’astrologie, ces deux magies qui m’accompagnent depuis l’enfance.<br>
+        Entre ciel et terre, je vous ouvre les portes d’un lieu magique et céleste.
+    </h2>
+    </p>
 </div>
 
 <?php
 include "footer.php";
 ?>
-

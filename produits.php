@@ -62,21 +62,21 @@ if (isset($_GET['delete'])) {
             <?php foreach ($produits as $produit): ?>
                 <div class="col mb-5">
                     <div class="card h-100">
-                        <!-- image du produit-->
+                        <!----- image du produit ------>
                         <img class="card-img-top" src="uploads/<?= htmlentities($produit['media_libelle']) ?>" alt="Photo du produit" />
-                        <!-- detail du produit -->
+                        <!------ detail du produit ----->
                         <div class="card-body m-4">
                             <div class="text-center">
-                                <!-- nom du produit-->
+                                <!----- nom du produit ------>
                                 <h5 class="fw-bolder"><?= htmlentities($produit['produits_nom']) ?></h5>
-                                <?= htmlentities($produit['nombre_pieces'] ?? '') ?> pièces.
+                                <?= htmlentities($produit['nombre_pieces'] ?? '') ?>
                                 <br>
                                 <hr>
-                                <!-- prix du produit -->
+                                <!------ prix du produit ------>
                                 <?= number_format($produit['produits_prix'], 2) ?> €.
                             </div>
                         </div>
-                        <!-- action du produit -->
+                        <!----- action du produit ----->
                         <div class="card-footer m-4 pt-0 border-top-0 bg-transparent">
                             <div class="text-center">
                                 <a class="btn btn-outline-dark mt-auto" href="produit-details.php?id=<?= htmlentities($produit['produits_id']) ?>">En savoir plus</a>

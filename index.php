@@ -23,12 +23,18 @@ include "header.php";
     </div>
 <!-----------Partie PHP Select * from pour afficher les produits --------> 
     <?php
-    $sql = "SELECT p.* FROM produits p ORDER BY produits_id DESC LIMIT 4";
+    $sql = "SELECT p.* , media_libelle 
+    FROM produits p inner join media m on p.produits_id =m.produits_id
+    ORDER BY produits_id 
+    DESC LIMIT 4";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $derniers_produits = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    ?>
+    // echo "<pre>";
+    // var_dump ($derniers_produits);
+    // echo "</pre>";
 
+    ?>
 <!----------------------- partie bootstrap pour afficher les produit sur la page d'accueil ---------------------------> 
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
@@ -38,7 +44,7 @@ include "header.php";
                 <div class="col mb-5">
                     <div class="card h-100">
                         <!-- image du Produit -->
-                        <img class="card-img-top" src="uploads/default.jpg" alt="Photo du produit" />
+                        <img class="card-img-top" src="./uploads/<?= $produit['media_libelle']?>" alt="Photo du produit" />
                         
                         <!-- détail du Produit -->
                         <div class="card-body m-4">
