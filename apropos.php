@@ -19,7 +19,9 @@ include "header.php";
 </h1>
 
 <div class="presentation">
-    <img src="/uploads/marion.jpg" width="500" height="500" />
+    <div class="photo_marion">
+        <img src="/uploads/marion.jpg" width="600rem" height="600rem" alt="présentation astralium" />
+    </div>
 
     <!--Présentation ecrite de l'illustratrice-->
 

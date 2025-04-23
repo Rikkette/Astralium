@@ -1,66 +1,115 @@
+/*Appel d'une font spécifique lier à la charte graphique de Marion*/
+
+@font-face {
+  font-family: 'SirenikRegular';
+  src: url('font/sirenik-regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SirenikItalic';
+  src: url('font/sirenik-italic.otf') format('opentype');
+  font-weight: normal;
+  font-style: italic;
+}
+
 /*------------------------------ Responsive --------------------------*/
-/*évolution de ma responsive pour qu'elle s'adapte au plus d'écrans possible on parle alros de mobile first */
+/*évolution de ma responsive pour qu'elle s'adapte a plus d'écrans possible on parle alors de mobile first */
+/*j'ai transposer toutes les tailles pixel en REM pour une meilleur responsivité */
+/* mobile-first */
 
 body {
-  font-size: 0.875rem; /* 14px */
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .container {
-  width: 90%;
+  width: 95%;
   margin: 0 auto;
+  padding: 0 1rem;
 }
 
 img,
 table {
   max-width: 100%;
   height: auto;
+  display: block; /* j'utilise block pour évité les espaces blancs sous les images */
 }
 
-/* --------------------------- Extra small ----------------------------*/
-@media screen and (max-width: 37.5rem) { /* 600px */
-  body {
-    font-size: 1rem; /* 16px */
-    /* Texte plus grand pour la lisibilité sur mobile */
-  }
+h1 {
+  font-size: 1.5rem;
+}
 
-  .container {
-    width: 95%;
-    /* Plus d'espace utilisé sur petit écran */
-  }
+.menu {
+  display: flex;
+  flex-direction: column;
+}
 
-  h1 {
-    font-size: 1.5rem; /* 24px */
-    /* Titres plus petits sur mobile */
-  }
-
-  .menu {
-    flex-direction: column;
-    /* Menu empilé sur mobile */
-  }
-
-  .button {
-    padding: 0.75rem 1.25rem; /* 12px 20px */
-    /* Boutons plus grands pour être facilement cliquables */
-    width: 100%;
-    /* Boutons pleine largeur sur mobile */
-  }
+.button {
+  padding: 0.75rem 1.25rem;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  display: inline-block; /**/
 }
 
 /* --------------------------Small screen---------------------*/
-@media screen and (min-width: 37.5rem) and (max-width: 47.9375rem) { /* 600px and 767px */
-  /* Styles spécifiques pour petites tablettes */
+@media screen and (min-width: 37.5rem) { /* 600 pixel et plus*/
+  body {
+    font-size: 0.875rem; 
+  }
+  
+  .container {
+    width: 90%;
+  }
+  
+  h1 {
+    font-size: 1.75rem;
+  }
+  
+  .menu {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .button {
+    width: auto;
+    margin-right: 0.5rem;
+  }
 }
 
 /* ------------------------------Medium screen-------------------*/
-@media screen and (min-width: 48rem) and (max-width: 61.9375rem) { /* 768px and 991px */
-  /* Styles spécifiques pour tablettes */
+@media screen and (min-width: 48rem) { /* 768 pixel et plus */
+  .container {
+    width: 85%;
+    max-width: 1200px; 
+  }
+  
+  h1 {
+    font-size: 2rem; 
+  }
 }
 
 /* -------------------------------Large screen-----------------*/
-@media screen and (min-width: 62rem) { /* 992px */
-  /* Styles spécifiques pour ordinateurs */
+@media screen and (min-width: 62rem) { /* 992 pixel et plus donc taille standard */
+  body {
+    font-size: 1rem; 
+  }
+  
+  h1 {
+    font-size: 2.25rem; 
+  }
 }
 
+/* Variable pour avoir une cohérence */
+
+:root {
+  --font-size-base: 1rem;
+  --spacing-unit: 1rem;
+  --container-width-small: 95%;
+  --container-width-medium: 90%;
+  --container-width-large: 85%;
+}
 /*------------------------------ header -----------------------------*/
 .banniereHeader {
   position: relative;
@@ -70,10 +119,10 @@ table {
 /*------------------------------ header Drapeau----------------------*/
 .drapeau {
   position: absolute;
-  top: 0.625rem; /* 10px */
-  left: 0.625rem; /* 10px */
+  top: 0.625rem;
+  left: 0.625rem; 
   display: flex;
-  gap: 0.3125rem; /* 5px */
+  gap: 0.3125rem;
 }
 
 .banniere {
@@ -82,41 +131,41 @@ table {
 }
 
 .drapeau-img {
-  width: 1.875rem; /* 30px */
+  width: 1.875rem;
   height: auto;
 }
 
 /*------------------------------ header caddie------------------------------*/
 .caddie {
   position: absolute;
-  top: 0.625rem; /* 10px */
-  right: 0.625rem; /* 10px */
+  top: 0.625rem; 
+  right: 0.625rem;
   display: flex;
-  gap: 0.3125rem; /* 5px */
+  gap: 0.3125rem;
 }
 
 /*---------------------------barre de recherche bootstrap header -----------------*/
 
 .form-inline {
   position: absolute;
-  top: 6.5625rem; /* 105px */
-  left: 0.625rem; /* 10px */
+  top: 6.5625rem;
+  left: 0.625rem;
   display: flex;
-  gap: 0.3125rem; /* 5px */
+  gap: 0.3125rem;
 }
 
 /*------------------------------ navbar header ou barre de navigation--------------------------------*/
-/*creation d'une class supplémentaire pour ajouter un effet ce style sur la Navbar*/
+/*création d'une class supplémentaire pour ajouter un effet ce style sur la Navbar*/
 .custom-nav { 
   display: center;
-  background-color: #99bcdd;
+  background-color: #dbecff;
   width: 100%;
-  height: 3.125rem; /* 50px */
-  padding: 0 0.625rem; /* 0px 10px */
-  border-radius: 3.125rem; /* 50px */
-  box-shadow: 0 0.625rem 0.625rem rgb(81, 91, 184); /* 0 10px 10px */
+  height: 3.125rem; 
+  padding: 0 0.625rem; 
+  border-radius: 3.125rem; 
+  box-shadow: 0 0.625rem 0.625rem rgb(170, 177, 236); 
   margin-top: 0;
-  margin-bottom: 1.875rem; /* 30px */
+  margin-bottom: 1.875rem;
   overflow: hidden;
   overflow-x: auto;
   position: relative;
@@ -124,7 +173,7 @@ table {
 
 .nav-item {
   position: relative;
-  height: 3.125rem; /* 50px */
+  height: 3.125rem; 
   color: #ffffff;
   margin-top: 0;
   justify-content: space-between;
@@ -137,111 +186,150 @@ table {
   justify-content: center;
 }
 
+.mb-4 { /* titre index */
+  font-family: 'SirenikRegular', Arial, sans-serif;
+  font-size: 4rem;
+}
+
 /*------------------------------ Boutique --------------------------*/
 .boutique-container {
   display: flex;
-  gap: 0.625rem; /* 10px */
+  gap: 0.625rem;
   justify-content: space-around;
 }
 
 #card_boutique {
   display: flex;
-  height: 5rem; /* 80px */
-  width: 2.5rem; /* 40px */
-  flex: 1 0 8.75rem; /* 140px */
+  height: 5rem; 
+  width: 2.5rem; 
+  flex: 1 0 8.75rem; 
 }
 
 .titre_boutique {
-  display: flex;
-  justify-content: center;
+  font-family: 'SirenikRegular', Arial, sans-serif;
+  font-size: 4rem;
+  color: #ffffff;
+  margin: 0;
 }
 
+.font_titre {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #6e7dc2;
+  width: 100%;
+  height: 6rem;
+  padding: 0 0.625rem;
+  border-radius: 3.125rem;
+  box-shadow: 0 0.625rem 0.625rem rgb(170, 172, 189);
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  overflow: hidden;
+  overflow-x: auto;
+  position: relative;
+}
 
 /*----------------Portefolio-------------------*/
 .titre_portefolio {
   display: flex;
-  justify-content: center
+  justify-content: center;
+  font-family: 'SirenikRegular', Arial, sans-serif;
+  font-size: 4rem;
+}
+
+.Calendrier_2025 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /*permet d'avoir des colonne de 4 image*/
+  gap: 20px;
 }
 
 /*----------------A propos-------------------*/
 .titre_a_propos {
   display: flex;
-  justify-content: center
+  justify-content: center;
+  font-family: 'SirenikRegular', Arial, sans-serif;
+  font-size: 4rem;
 }
 
 .presentation {
   display: flex;
   align-items: center;
-  gap: 1.25rem; /* 20px */
+  gap: 1.25rem; 
 }
 
 .paragraphe {
   margin: 0;
-  margin-bottom: 31.25rem; /* 500px */
+  margin-bottom: 31.25rem;
+}
+
+.photo_marion {
+  margin: 2rem;
 }
 
 /*----------------blog -------------------*/
 .titre_blog {
   display: flex;
-  justify-content: center
+  justify-content: center;
+  font-family: 'SirenikRegular', Arial, sans-serif;
+  font-size: 4rem;
 }
 
 /*--------------------------- Footer --------------------------*/
 #rectangle {
   width: 100%;
-  height: 18.75rem; /* 300px */
+  height: 18.75rem;
   background: rgba(219, 236, 255, 255);
 }
 
 .titre_reseaux {
   display: flex;
   position: absolute;
-  right: 23.125rem; /* 370px */
-  margin-top: 1.875rem; /* 30px */
+  right: 23.125rem; 
+  margin-top: 1.875rem;
 }
 
 .reseaux-container {
   display: flex;
-  right: 1.875rem; /* 30px */
+  right: 1.875rem; 
   position: absolute;
-  margin-top: 4.375rem; /* 70px */
-  margin-right: 3.125rem; /* 50px */
+  margin-top: 4.375rem; 
+  margin-right: 3.125rem;
   width: 25%;
 }
 
 .icone {
   display: flex;
   justify-content: space-between;
-  gap: 1.25rem; /* 20px */
-  margin-top: 0.625rem; /* 10px */
+  gap: 1.25rem; 
+  margin-top: 0.625rem; 
 }
 
 .mentions-container {
   display: flex;
   flex-direction: column;
   position: absolute;
-  margin-left: 32.5rem; /* 520px */
-  margin-top: 1.875rem; /* 30px */
+  margin-left: 32.5rem; 
+  margin-top: 1.875rem;
   cursor: pointer;
 }
 
 .barre_vertical01 {
   display: flex;
-  right: 31.25rem; /* 500px */
+  right: 31.25rem;
   position: absolute;
-  margin-top: 0.625rem; /* 10px */
-  height: 18.125rem; /* 290px */
-  padding-right: 12.5rem; /* 200px */
+  margin-top: 0.625rem; 
+  height: 18.125rem; 
+  padding-right: 12.5rem;
   border-right: 1px solid rgb(0, 0, 0);
 }
 
 .barre_vertical02 {
   display: flex;
-  left: 18.75rem; /* 300px */
+  left: 18.75rem;
   position: absolute;
-  margin-top: 0.625rem; /* 10px */
-  height: 18.125rem; /* 290px */
-  padding-right: 12.5rem; /* 200px */
+  margin-top: 0.625rem;
+  height: 18.125rem;
+  padding-right: 12.5rem;
   border-right: 1px solid rgb(0, 0, 0);
 }
 
@@ -249,39 +337,39 @@ table {
   display: flex;
   position: absolute;
   justify-content: center;
-  margin-top: 1.875rem; /* 30px */
-  left: 11.875rem; /* 190px */
+  margin-top: 1.875rem; 
+  left: 11.875rem;
 }
 
 .newsletter {
   display: flex;
   position: absolute;
   justify-content: center;
-  margin-top: 9.375rem; /* 150px */
-  left: 8.125rem; /* 130px */
+  margin-top: 9.375rem; 
+  left: 8.125rem; 
 }
 
 .button {
   display: flex;
   position: absolute;
   justify-content: center;
-  margin-top: 12.5rem; /* 200px */
-  left: 10.625rem; /* 170px */
+  margin-top: 12.5rem; 
+  left: 10.625rem; 
   border: 0;
   line-height: 2.5;
-  padding: 0 1.25rem; /* 0 20px */
-  font-size: 1rem; /* 16px */
+  padding: 0 1.25rem;
+  font-size: 1rem; 
   text-align: center;
   color: #fff;
-  text-shadow: 0.0625rem 0.0625rem 0.0625rem #000; /* 1px 1px 1px */
-  border-radius: 0.625rem; /* 10px */
+  text-shadow: 0.0625rem 0.0625rem 0.0625rem #000; 
+  border-radius: 0.625rem; 
   background-color: rgb(56, 93, 148);
   background-image: linear-gradient(to top left,
       rgba(0, 0, 0, 0.2),
       rgba(0, 0, 0, 0.2) 30%,
       rgba(0, 0, 0, 0));
   box-shadow:
-    inset 0.125rem 0.125rem 0.1875rem rgba(255, 255, 255, 0.6), /* 2px 2px 3px */
+    inset 0.125rem 0.125rem 0.1875rem rgba(255, 255, 255, 0.6), 
     inset -0.125rem -0.125rem 0.1875rem rgba(0, 0, 0, 0.6);
 }
 

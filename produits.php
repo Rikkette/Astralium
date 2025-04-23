@@ -51,9 +51,10 @@ if (isset($_GET['delete'])) {
 }
 ?>
 
-<h1 class="titre_boutique">
-    Bienvenue sur ma Boutique
-</h1>
+<div class="font_titre">
+  <h1 class="titre_boutique">Bienvenue sur ma boutique</h1>
+</div>
+
 <!------------------------------------------------- partie bootstrap produit card ---------------------------------->
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">

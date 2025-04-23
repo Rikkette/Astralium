@@ -34,7 +34,8 @@ include "header.php";
     // var_dump ($derniers_produits);
     // echo "</pre>";
 
-    ?>
+    ?>  
+
 <!----------------------- partie bootstrap pour afficher les produit sur la page d'accueil ---------------------------> 
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">

@@ -7,68 +7,87 @@ include "header.php";
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!--liens /script des librairies JavaScript pour fancybox -->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-<script type="text/javascript" src="/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
-<!--Ajoutez des transitions "swing" et "linéaire"-->
+<!------------------------------ jquery --------------------------------->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!---------------------------liens fichier fancybox ------------------------->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<!------------- option: transition « swing » et « linéaire » -------->
 <script type="text/javascript" src="/fancybox/jquery.easing-1.4.pack.js"></script>
-<!-- Active la molette de la souris pour naviguer dans la galerie.--->
+<!------ option: Active la molette de la souris pour naviguer dans la galerie ----->
 <script type="text/javascript" src="/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
 
 <h1 class="titre_portefolio">
     Bienvenue sur mon Portfolio
 </h1>
+<section class="Calendrier_2025">
+    <!---Calendrier Janvier 2025 --->
+    <a class="groupe_calendrier_2025" rel="Calendrier_2025" href="/Style/calendrier_fr/Calendrier_01_Janvier.png" data-fancybox="gallery">
+        <img src="Style/calendrier_fr/Calendrier_01_Janvier.png" alt="Calendrier Janvier" style="width:400px;">
+    </a>
+    <!---Calendrier Février 2025 --->
+    <a class="groupe_calendrier_2025" rel="Calendrier_2025" href="/Style/calendrier_fr/Calendrier_02_Février.png" data-fancybox="gallery">
+        <img src="Style/calendrier_fr/Calendrier_02_Février.png" alt="Calendrier Février" style="width:400px;">
+    </a>
+    <!---Calendrier Mars 2025 --->
+    <a class="groupe_calendrier_2025" rel="Calendrier_2025" href="/Style/calendrier_fr/Calendrier_03_Mars.png" data-fancybox="gallery">
+        <img src="Style/calendrier_fr/Calendrier_03_Mars.png" alt="Calendrier Mars" style="width:400px;">
+    </a>
+    <!---Calendrier Avril 2025 --->
+    <a class="groupe_calendrier_2025" rel="Calendrier_2025" href="/Style/calendrier_fr/Calendrier_04_Avril.png" data-fancybox="gallery">
+        <img src="Style/calendrier_fr/Calendrier_04_Avril.png" alt="Calendrier Avril" style="width:400px;">
+    </a>
+    <!---Calendrier Mai 2025 --->
+    <a class="groupe_calendrier_2025" rel="Calendrier_2025" href="/Style/calendrier_fr/Calendrier_05_Mai.png" data-fancybox="gallery">
+        <img src="Style/calendrier_fr/Calendrier_05_Mai.png" alt="Calendrier Mai" style="width:400px;">
+    </a>
+     <!---Calendrier Juin 2025 --->
+     <a class="groupe_calendrier_2025" rel="Calendrier_2025" href="/Style/calendrier_fr/Calendrier_06_Juin.png" data-fancybox="gallery">
+        <img src="Style/calendrier_fr/Calendrier_06_Juin.png" alt="Calendrier Juin" style="width:400px;">
+    </a>
+     <!---Calendrier Juillet 2025 --->
+     <a class="groupe_calendrier_2025" rel="Calendrier_2025" href="/Style/calendrier_fr/Calendrier_07_Juillet.png" data-fancybox="gallery">
+        <img src="Style/calendrier_fr/Calendrier_07_Juillet.png" alt="Calendrier Juillet" style="width:400px;">
+    </a>
+     <!---Calendrier Aout 2025 --->
+     <a class="groupe_calendrier_2025" rel="Calendrier_2025" href="/Style/calendrier_fr/Calendrier_08_Août.png" data-fancybox="gallery">
+        <img src="Style/calendrier_fr/Calendrier_08_Août.png" alt="Calendrier Aout" style="width:400px;">
+    </a>
+    <!---Calendrier Septembre 2025 --->
+    <a class="groupe_calendrier_2025" rel="Calendrier_2025" href="/Style/calendrier_fr/Calendrier_09_Septembre.png" data-fancybox="gallery">
+        <img src="Style/calendrier_fr/Calendrier_09_Septembre.png" alt="Calendrier Septembre" style="width:400px;">
+    </a>
+    <!---Calendrier Octobre 2025 --->
+    <a class="groupe_calendrier_2025" rel="Calendrier_2025" href="/Style/calendrier_fr/Calendrier_10_Octobre.png" data-fancybox="gallery">
+        <img src="Style/calendrier_fr/Calendrier_10_Octobre.png" alt="Calendrier Octobre" style="width:400px;">
+    </a>
+    <!---Calendrier Novembre 2025 --->
+    <a class="groupe_calendrier_2025" rel="Calendrier_2025" href="/Style/calendrier_fr/Calendrier_11_Novembre.png" data-fancybox="gallery">
+        <img src="Style/calendrier_fr/Calendrier_11_Novembre.png" alt="Calendrier Novembre" style="width:400px;">
+    </a>
+    <!---Calendrier Décembre 2025 --->
+    <a class="groupe_calendrier_2025" rel="Calendrier_2025" href="/Style/calendrier_fr/Calendrier_12_Décembre.png" data-fancybox="gallery">
+        <img src="Style/calendrier_fr/Calendrier_12_Décembre.png" alt="Calendrier Décembre" style="width:400px;">
+    </a>
 
-<!--------Récupération des images depuis la base de données------>
-<?php
-$sql = "SELECT m.*, p.produits_nom 
-        FROM Media m 
-        LEFT JOIN produits p ON m.produits_id = p.produits_id 
-        ORDER BY m.media_id DESC";
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-$images = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
-
-<!-------------------------- Partie bootstrap ----------------------------->
-<div class="container py-5">
-    <div class="row">
-        <?php foreach ($images as $image): ?>
-            <div class="col-md-4 col-sm-6 mb-4">
-                <div class="portfolio-item">
-                    <?php
-                    // Utilisation d'une extension stockée ou par défaut jpg
-                    $extension = !empty($image['media_extension']) ? $image['media_extension'] : 'jpg';
-                    $imagePath = "uploads/" . $image['media_id'] . "." . $extension;
-                    ?>
-                    <a href="<?= htmlspecialchars($imagePath) ?>" data-fancybox="gallery"
-                        data-caption="<?= htmlspecialchars($image['produits_nom'] ?? 'Image') ?>">
-                        <img src="<?= htmlspecialchars($imagePath) ?>" class="img-fluid rounded"
-                            alt="<?= htmlspecialchars($image['produits_nom'] ?? 'Image') ?>">
-                    </a>
-                    <?php if (isset($image['produits_nom'])): ?>
-                        <div class="mt-2"><?= htmlspecialchars($image['produits_nom']) ?></div>
-                    <?php endif; ?>
-                </div>
-            </div>
-        <?php endforeach; ?>
-    </div>
-</div>
-
-<!--------------------- Initialisation de la bibliotheque Fancybox ------------>
-<link rel="stylesheet" href="/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
+</section>
+<!-----------------------partie fancybox ------------------->
 <script>
     $(document).ready(function() {
-        Fancybox.bind('[data-fancybox]', {
+        $("[data-fancybox]").fancybox({
+
+            loop: true,
             buttons: [
                 "zoom",
+                "share",
                 "slideShow",
                 "fullScreen",
                 "download",
                 "thumbs",
                 "close"
             ],
-            loop: true
+            animationEffect: "zoom",
+            transitionEffect: "slide"
         });
     });
 </script>
