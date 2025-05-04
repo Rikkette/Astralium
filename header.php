@@ -1,4 +1,4 @@
-<!----- Header qui regroupe la barre de recherche, la navbarre de naviagation, panier, traduction, connextion user/admin, newsletter,contacte marion ------> 
+<!----- Header qui regroupe la barre de recherche, la navbarre de naviagation, panier, traduction, connextion user/admin, newsletter,contacte marion ------>
 
 <?php
 //-----------------------------je lance la session ---------------------------
@@ -6,6 +6,9 @@
 if (session_status() === PHP_SESSION_NONE) {
   session_start();
 }
+
+// ------------------J'inclue le gestionnaire de langue------------------------------------
+include_once 'gestionnaire_langue.php';
 
 // -----------------------Configuration de la base de données-------------------------
 
@@ -44,7 +47,8 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
 <!---------------------------------------html--------------------------------------------->
 
 <!DOCTYPE html>
-<html lang="fr">
+<!--ici je lance une session pour choisir la langue ou renvoyer l'info-->
+<html lang="<?php echo $_SESSION['lang']; ?>">
 
 <head>
   <meta charset="UTF-8">
@@ -66,24 +70,28 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
 </head>
 
 <!-------------------------- Drapeau langue EN & FR ------------------------->
+<div class="langue-select">
+  <div class="banniereHeader">
+    <div class="drapeau">
+      <a href="<?php echo $en_link; ?>"><img src="Style/logo/drapeau_en.png" width="40" height="30" alt="English" class="drapeau-img" style="cursor: pointer"></a>
+      <a href="<?php echo $fr_link; ?>"><img src="Style/logo/drapeau_fr.png" width="40" height="30" alt="Français" class="drapeau-img" style="cursor: pointer"></a>
+    </div>
+  </div>
+</div>
 
-<div class="banniereHeader">
-  <div class="drapeau">
-    <img src="Style/logo/drapeau_en.png" width="40" height="30" alt="Anglais" class="drapeau-img" style="cursor: pointer;">
-    <img src="Style/logo/drapeau_fr.png" width="40" height="30" alt="Français" class="drapeau-img" style="cursor: pointer;">
-  </div>
-  <!-------------------------- caddie logo ------------------------->
-  <div class="caddie">
-    <img src="Style/logo/sac_logo.png" width="150" height="80" alt="caddie logo" class="caddie-img" style="cursor: pointer;">
-  </div>
-  <!-------------------------- Nav bar bootstrap : barre de recherche ------------------------------>
-  <nav class="navbar navbar-light bg-light">
-    <form class="form-inline">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </nav>
-  <img src="Style/logo/banniere.header.png" class="banniere">
+<!-------------------------- caddie logo ------------------------->
+<div class="caddie">
+  <img src="Style/logo/sac_logo.png" width="150" height="80" alt="caddie logo" class="caddie-img" style="cursor: pointer;">
+</div>
+<!-------------------------- Nav bar bootstrap : barre de recherche ------------------------------>
+<!-------------------------- ici je traduit la barre de recherche -------------------->
+<nav class="navbar navbar-light bg-light">
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="<?php echo isset($lang['search']) ? $lang['search'] : 'Recherche'; ?>" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><?php echo isset($lang['search']) ? $lang['search'] : 'Recherche'; ?></button>
+  </form>
+</nav>
+<img src="Style/logo/banniere.header.png" class="banniere">
 </div>
 
 <!------------------------------ Nav Bar bootstrap :  ---------------------------->
@@ -95,41 +103,41 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
     </button>
     <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
       <ul class="navbar-nav mx-auto">
-
+        <!--Je traduit egalement les differents élèment de la barre de navigation -->
         <!--------------- Accueil ---------------->
         <li class="nav-item">
-          <a class="nav-link" href="index.php">Accueil</a>
+          <a class="nav-link" href="index.php"><?php echo isset($lang['home']) ? $lang['home'] : 'Accueil'; ?></a>
         </li>
         <!--------------- Boutique --------------->
         <li class="nav-item">
-          <a class="nav-link" href="produits.php">Boutique</a>
+          <a class="nav-link" href="produits.php"><?php echo isset($lang['shop']) ? $lang['shop'] : 'Boutique'; ?></a>
         </li>
         <!--------------- Portfolio -------------->
         <li class="nav-item">
-          <a class="nav-link" href="portfolio.php">Portfolio</a>
+          <a class="nav-link" href="portfolio.php"><?php echo isset($lang['portfolio']) ? $lang['portfolio'] : 'Portfolio'; ?></a>
         </li>
         <!---------------- A propos ---------------->
         <li class="nav-item">
-          <a class="nav-link" href="apropos.php">Qui suis-je ?</a>
+          <a class="nav-link" href="apropos.php"><?php echo isset($lang['about']) ? $lang['about'] : 'Qui suis-je ?'; ?></a>
         </li>
         <!------------------- blog ----------------->
         <li class="nav-item">
-          <a class="nav-link" href="blog.php">Blog</a>
+          <a class="nav-link" href="blog.php"><?php echo isset($lang['blog']) ? $lang['blog'] : 'Blog'; ?></a>
         </li>
         <!----------------- newsletter --------------->
         <li class="nav-item">
-        <a href="#" data-bs-toggle="modal" data-bs-target="#newsletterModal"> Newsletter </a>
+          <a href="#" data-bs-toggle="modal" data-bs-target="#newsletterModal"> <?php echo isset($lang['newsletter']) ? $lang['newsletter'] : 'Newsletter'; ?> </a>
         </li>
         <!------------------------ Me contacter modale via bootstrap--------------->
         <li class="nav-item">
-        <a href="#" data-bs-toggle="modal" data-bs-target="#contactModal"> Me contacter </a>
+          <a href="#" data-bs-toggle="modal" data-bs-target="#contactModal"> <?php echo isset($lang['contact']) ? $lang['contact'] : 'Me contacter'; ?> </a>
         </li>
 
         <!----------------- Bouton Connexion/Déconnexion ----->
         <?php if ($isLoggedIn): ?>
-          <a href="logout.php" class="position"> Déconnexion </a>
+          <a href="logout.php" class="position"> <?php echo isset($lang['logout']) ? $lang['logout'] : 'Déconnexion'; ?> </a>
         <?php else: ?>
-          <a href="login.php" class="position"> Connexion </a>
+          <a href="login.php" class="position"> <?php echo isset($lang['login']) ? $lang['login'] : 'Connexion'; ?> </a>
         <?php endif; ?>
         </li>
 
@@ -144,36 +152,36 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="contactModalLabel">Me contacter</h5>
+        <h5 class="modal-title" id="contactModalLabel"><?php echo isset($lang['contact_me']) ? $lang['contact_me'] : 'Me contacter'; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
       </div>
       <div class="modal-body">
 
         <!--------------------- le formulaire de contact --------------------->
         <form>
-        <!------------------- Le Nom ------------------------>
+          <!------------------- Le Nom ------------------------>
           <div class="mb-3">
-            <label for="nom" class="form-label">Nom</label>
+            <label for="nom" class="form-label"><?php echo isset($lang['name']) ? $lang['name'] : 'Nom'; ?></label>
             <input type="text" class="form-control" id="nom">
           </div>
-         <!-------------------- L'email ---------------------->
+          <!-------------------- L'email ---------------------->
           <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
+            <label for="email" class="form-label"><?php echo isset($lang['email']) ? $lang['email'] : 'Email'; ?></label>
             <input type="email" class="form-control" id="email">
           </div>
           <!---------------------- Le Message --------------------->
           <div class="mb-3">
-            <label for="message" class="form-label">Message</label>
+            <label for="message" class="form-label"><?php echo isset($lang['message']) ? $lang['message'] : 'Message'; ?></label>
             <textarea class="form-control" id="message" rows="3"></textarea>
           </div>
 
         </form>
 
       </div>
-       <!-------------------- Bouton Fermer/Envoyer --------------------->
+      <!-------------------- Bouton Fermer/Envoyer --------------------->
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-        <button type="button" class="btn btn-primary">Envoyer</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?php echo isset($lang['close']) ? $lang['close'] : 'Fermer'; ?></button>
+        <button type="button" class="btn btn-primary"><?php echo isset($lang['send']) ? $lang['send'] : 'Envoyer'; ?></button>
       </div>
 
     </div>
@@ -186,40 +194,40 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
 <div class="modal fade" id="newsletterModal" tabindex="-1" aria-labelledby="newsletterModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <!-----------------------------------titre de la modale -------------------------------------->
+      <!-----------------------------------titre de la modale + traduction -------------------------------------->
       <div class="modal-header">
-        <h5 class="modal-title" id="newsletterModalLabel">Inscription à la newsletter</h5>
+        <h5 class="modal-title" id="newsletterModalLabel"><?php echo isset($lang['newsletter_signup']) ? $lang['newsletter_signup'] : 'Inscription à la newsletter'; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
       </div>
 
       <div class="modal-body">
-        <p>Inscrivez-vous pour recevoir mes dernières actualités et créations.</p>
+        <p><?php echo isset($lang['newsletter_text']) ? $lang['newsletter_text'] : 'Inscrivez-vous pour recevoir mes dernières actualités et créations.'; ?></p>
 
         <!------------------------------- Formulaire Newsletter --------------------------------------->
         <form>
-          <!---------------------------------- Le Nom ------------------------------------------------->
+          <!---------------------------------- Le Nom  + traduction------------------------------------------------->
           <div class="mb-3">
-            <label for="newsletterNom" class="form-label">Nom</label>
+            <label for="newsletterNom" class="form-label"><?php echo isset($lang['name']) ? $lang['name'] : 'Nom'; ?></label>
             <input type="text" class="form-control" id="newsletterNom">
           </div>
-          <!---------------------------------- L'email -------------------------------------------------->
+          <!---------------------------------- L'email  + traduction-------------------------------------------------->
           <div class="mb-3">
-            <label for="newsletterEmail" class="form-label">Email</label>
+            <label for="newsletterEmail" class="form-label"><?php echo isset($lang['email']) ? $lang['email'] : 'Email'; ?></label>
             <input type="email" class="form-control" id="newsletterEmail" required>
           </div>
-         <!-------------- la check box pour accepter de recevoir les emails de newsletter----------------->
+          <!-------------- la check box pour accepter de recevoir les emails de newsletter  + traduction----------------->
           <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="rgpdCheck" required>
-            <label class="form-check-label" for="rgpdCheck">J'accepte de recevoir la newsletter et j'ai lu la politique de confidentialité</label>
+            <label class="form-check-label" for="rgpdCheck"><?php echo isset($lang['privacy_policy']) ? $lang['privacy_policy'] : 'J\'accepte de recevoir la newsletter et j\'ai lu la politique de confidentialité'; ?></label>
           </div>
 
         </form>
 
       </div>
-
+      <!--------- modal footer + traduction-------->
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-        <button type="button" class="btn btn-primary">S'inscrire</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?php echo isset($lang['cancel']) ? $lang['cancel'] : 'Annuler'; ?></button>
+        <button type="button" class="btn btn-primary"><?php echo isset($lang['subscribe']) ? $lang['subscribe'] : 'S\'inscrire'; ?></button>
       </div>
 
     </div>

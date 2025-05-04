@@ -1,4 +1,5 @@
 <!--- Page panier pour y mettre tout les produits lors de l'achat --->
+<!--comment gere les numero d'envoie de colies par email automatiquement pour les clients sans le faire manuellement ? -->
 
 <?php
 

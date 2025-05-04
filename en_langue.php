@@ -1,1 +1,0 @@
-<!------- Traduction Langue Anglaise ----------->

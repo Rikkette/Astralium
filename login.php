@@ -9,7 +9,6 @@ if (isset($_SESSION['users_id'])) {
     exit();
 }
 
-
 // Traitement de la soumission du formulaire de connexion
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Réception des données du formulaire en méthodes POST
@@ -17,7 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['users_password'];
 
     var_dump($login, $password);
-
 
     $stmt = $pdo->prepare("SELECT * FROM users WHERE users_email = :login");;
     $stmt->bindValue(':login', $login);

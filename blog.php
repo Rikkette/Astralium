@@ -1,4 +1,5 @@
 <!---- création d'une partie blog sur le site internet d'Astralium ---->
+<!---pensée a pouvoir gérer les commanbtaires --->
 <?php
 include "header.php";
 ?>

@@ -1,8 +1,6 @@
 <!----------Espace ou la créatrice ce presente elle et sont travail---------->
 <?php
-
 include "header.php";
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +34,6 @@ include "header.php";
     </h2>
     </p>
 </div>
-
 <?php
 include "footer.php";
 ?>
