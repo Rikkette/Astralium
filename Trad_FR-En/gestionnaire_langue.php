@@ -1,8 +1,7 @@
 
 <?php
 
-// Je démarre la session au début de mon fichier
-session_start();
+
 
 // Je définis la langue par défaut (FR)
 if (!isset($_SESSION['lang'])) {

@@ -5,7 +5,7 @@ include("header.php");
 
 // Uniquement si on est grade "admin" si non la personne est renvoyée vers l'index
 if (!isset($Admin) || !$Admin) {
-    header("Location: index.php");
+    echo '<meta http-equiv="refresh" content="0;url=../index.php">';
     exit;
 }
 
@@ -52,11 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             if (move_uploaded_file($tmp_name, $file_path)) {
                 // Insertion des informations de l'image dans la base de données
-                $sql = "INSERT INTO produit_images (image_nom, produit_id) VALUES (:image_nom, :produit_id)";
+                $sql = "INSERT INTO media (produits_id, media_libelle) VALUES (:produits_id, :media_libelle)";
                 $request = $pdo->prepare($sql);
                 $request->execute([
-                    ':image_nom' => $filename,
-                    ':produit_id' => $nouveau_produit_id
+                    ':media_libelle' => $filename,
+                    ':produits_id' => $nouveau_produit_id
                 ]);
             }
         }

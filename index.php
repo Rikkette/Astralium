@@ -2,13 +2,12 @@
 
 <?php
 include "header.php";
-// j'inclue mon gestionnaire de langue
-include_once 'gestionnaire_langue.php';
+
 ?>
 
 <!DOCTYPE html>
 <!--ici je lance une session pour choisir la langue ou renvoyer l'info-->
-<html lang="<?php echo $_SESSION['lang']; ?>">
+
 
 <head>
     <meta charset="UTF-8">
@@ -45,7 +44,7 @@ include_once 'gestionnaire_langue.php';
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
             <!--ici je modifie pour que la langue puisse etre traduite avec le "php echo $lang ['']"--->
-            <h2 class="mb-4"><?php echo $lang['Nos dernières nouveautés']; ?></h2>
+            <h2 class="mb-4">Nos dernières nouveautés</h2>
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 <?php foreach ($derniers_produits as $produit): ?>
                     <div class="col mb-5">
@@ -68,7 +67,7 @@ include_once 'gestionnaire_langue.php';
                             <div class="card-footer m-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center">
                                     <!--ici traduction des card de vente du site---->
-                                    <a class="btn btn-outline-dark mt-auto" href="produit-details.php?id=<?= htmlentities($produit['produits_id']) ?>"><?php echo $lang['En savoir plus']; ?></a>
+                                    <a class="btn btn-outline-dark mt-auto" href="produit-details.php?id=<?= htmlentities($produit['produits_id']) ?>">En savoir plus</a>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +77,7 @@ include_once 'gestionnaire_langue.php';
             <!--------- cette partie et relier a un bouton qui renvoie vers la boutique ---------->
             <div class="text-center mt-4">
                 <!--ici traduction du lien vers la boutique--->
-                <a class="btn btn-primary" href="produits.php"><?php echo $lang['Voir tous nos produits']; ?></a>
+                <a class="btn btn-primary" href="produits.php">Voir tous nos produits</a>
             </div>
 
         </div>

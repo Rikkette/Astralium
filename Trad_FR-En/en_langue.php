@@ -1,4 +1,4 @@
-<!------- Traduction Langue Anglaise ----------->
+----- Traduction Langue Anglaise ---------
 <?php
 return [
 
@@ -60,4 +60,4 @@ return [
     Astralium was born from a deep desire to connect art with astrology, these two magics that have accompanied me since childhood.
     Between heaven and earth, I open the doors to a magical and celestial place.'
 ];
-?>
+// ?>

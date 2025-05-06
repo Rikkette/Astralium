@@ -15,19 +15,19 @@
 }
 
 /*------------------------------ Responsive --------------------------*/
-/*évolution de ma responsive pour qu'elle s'adapte a plus d'écrans possible on parle alors de mobile first */
-/*j'ai transposer toutes les tailles pixel en REM pour une meilleur responsivité */
+/*évolution de ma responsive pour qu'elle s'adapte a plus d'écrans possible on
+ parle alors de mobile first */
 /* mobile-first */
 
 body {
   font-size: 16px;
-  line-height: 24px; /* 1.5 * 16px */
+  line-height: 24px; 
 }
 
 .container {
   width: 95%;
   margin: 0 auto;
-  padding: 0 16px; /* 1rem = 16px */
+  padding: 0 16px;
 }
 
 img,
@@ -38,7 +38,7 @@ table {
 }
 
 h1 {
-  font-size: 24px; /* 1.5 * 16px */
+  font-size: 24px; 
 }
 
 .menu {
@@ -47,26 +47,27 @@ h1 {
 }
 
 .button {
-  padding: 12px 20px; /* 0.75rem * 16px = 12px, 1.25rem * 16px = 20px */
+  padding: 12px 20px;
   width: 100%;
-  margin-bottom: 8px; /* 0.5rem * 16px */
-  display: inline-block; /**/
+  margin-bottom: 8px; 
+  display: inline-block; 
 }
 
+
 /* --------------------------Small screen---------------------*/
-@media screen and (min-width: 732px) { /* 732px et plus */
+@media screen and (min-width: 732px) {
 
   .container {
     width: 90%;
   }
 
-  h1.titre_boutique {
+  h1 .titre_boutique {
     display: flex;
     size: 6%;
   }
   
   h1 {
-    font-size: 28px; /* 1.75rem * 16px */
+    font-size: 28px;
   }
   
   .menu {
@@ -76,12 +77,12 @@ h1 {
   
   .button {
     width: auto;
-    margin-right: 8px; /* 0.5rem * 16px */
+    margin-right: 8px; 
   }
 }
 
 /* ------------------------------Medium screen-------------------*/
-@media screen and (min-width: 768px) { /* 48rem = 768px */
+@media screen and (min-width: 768px) {
 
   .container {
     width: 85%;
@@ -89,24 +90,24 @@ h1 {
   }
   
   h1 {
-    font-size: 32px; /* 2rem * 16px */
+    font-size: 32px; 
   }
 
 }
 
 /* -------------------------------Large screen-----------------*/
-@media screen and (min-width: 992px) { /* 62rem = 992px */
+@media screen and (min-width: 992px) { 
   
   h1 {
-    font-size: 36px; /* 2.25rem * 16px */
+    font-size: 36px; 
   }
 }
 
 /* Variable pour avoir une cohérence */
 
 :root {
-  --font-size-base: 16px; /* 1rem = 16px */
-  --spacing-unit: 16px; /* 1rem = 16px */
+  --font-size-base: 16px; 
+  --spacing-unit: 16px;
   --container-width-small: 95%;
   --container-width-medium: 90%;
   --container-width-large: 85%;

@@ -8,7 +8,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 // ------------------J'inclue le gestionnaire de langue------------------------------------
-include_once 'gestionnaire_langue.php';
+//include_once 'Trad_FR-En/gestionnaire_langue.php';
 
 // -----------------------Configuration de la base de données-------------------------
 
@@ -40,15 +40,16 @@ if (isset($_SESSION['users_id'])) {
     $username = $user['users_id'];
   }
 }
-$Admin = isset($_SESSION['type_libelle']) && in_array($_SESSION['type_libelle'], ['admin']);
+$Admin = isset($_SESSION['type_libelle']) && in_array($_SESSION['type_libelle'], ['Admin']);
 $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
+
+var_dump($_SESSION['type_libelle']);
 
 ?>
 <!---------------------------------------html--------------------------------------------->
 
 <!DOCTYPE html>
 <!--ici je lance une session pour choisir la langue ou renvoyer l'info-->
-<html lang="<?php echo $_SESSION['lang']; ?>">
 
 <head>
   <meta charset="UTF-8">
@@ -73,8 +74,8 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
 <div class="langue-select">
   <div class="banniereHeader">
     <div class="drapeau">
-      <a href="<?php echo $en_link; ?>"><img src="Style/logo/drapeau_en.png" width="40" height="30" alt="English" class="drapeau-img" style="cursor: pointer"></a>
-      <a href="<?php echo $fr_link; ?>"><img src="Style/logo/drapeau_fr.png" width="40" height="30" alt="Français" class="drapeau-img" style="cursor: pointer"></a>
+      <a href="#"><img src="Style/logo/drapeau_en.png" width="40" height="30" alt="English" class="drapeau-img" style="cursor: pointer"></a>
+      <a href="#"><img src="Style/logo/drapeau_fr.png" width="40" height="30" alt="Français" class="drapeau-img" style="cursor: pointer"></a>
     </div>
   </div>
 </div>
@@ -87,8 +88,8 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
 <!-------------------------- ici je traduit la barre de recherche -------------------->
 <nav class="navbar navbar-light bg-light">
   <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="<?php echo isset($lang['search']) ? $lang['search'] : 'Recherche'; ?>" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><?php echo isset($lang['search']) ? $lang['search'] : 'Recherche'; ?></button>
+    <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button>
   </form>
 </nav>
 <img src="Style/logo/banniere.header.png" class="banniere">
@@ -106,38 +107,43 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
         <!--Je traduit egalement les differents élèment de la barre de navigation -->
         <!--------------- Accueil ---------------->
         <li class="nav-item">
-          <a class="nav-link" href="index.php"><?php echo isset($lang['home']) ? $lang['home'] : 'Accueil'; ?></a>
+          <a class="nav-link" href="index.php">Accueil</a>
         </li>
         <!--------------- Boutique --------------->
         <li class="nav-item">
-          <a class="nav-link" href="produits.php"><?php echo isset($lang['shop']) ? $lang['shop'] : 'Boutique'; ?></a>
+          <a class="nav-link" href="produits.php">Boutique</a>
         </li>
         <!--------------- Portfolio -------------->
         <li class="nav-item">
-          <a class="nav-link" href="portfolio.php"><?php echo isset($lang['portfolio']) ? $lang['portfolio'] : 'Portfolio'; ?></a>
+          <a class="nav-link" href="portfolio.php">Portfolio</a>
         </li>
         <!---------------- A propos ---------------->
         <li class="nav-item">
-          <a class="nav-link" href="apropos.php"><?php echo isset($lang['about']) ? $lang['about'] : 'Qui suis-je ?'; ?></a>
+          <a class="nav-link" href="apropos.php">Qui suis-je ?</a>
         </li>
         <!------------------- blog ----------------->
         <li class="nav-item">
-          <a class="nav-link" href="blog.php"><?php echo isset($lang['blog']) ? $lang['blog'] : 'Blog'; ?></a>
+          <a class="nav-link" href="blog.php">Blog</a>
         </li>
         <!----------------- newsletter --------------->
         <li class="nav-item">
-          <a href="#" data-bs-toggle="modal" data-bs-target="#newsletterModal"> <?php echo isset($lang['newsletter']) ? $lang['newsletter'] : 'Newsletter'; ?> </a>
+          <a href="#" data-bs-toggle="modal" data-bs-target="#newsletterModal">Newsletter</a>
         </li>
         <!------------------------ Me contacter modale via bootstrap--------------->
         <li class="nav-item">
-          <a href="#" data-bs-toggle="modal" data-bs-target="#contactModal"> <?php echo isset($lang['contact']) ? $lang['contact'] : 'Me contacter'; ?> </a>
+          <a href="#" data-bs-toggle="modal" data-bs-target="#contactModal"> Me contacter </a>
         </li>
+        <!----->
+        <li class="nav_item">
+          <a href="produit-select.php" class="nav-link">ajouter produit</a>
+          
+          </li>
 
         <!----------------- Bouton Connexion/Déconnexion ----->
         <?php if ($isLoggedIn): ?>
-          <a href="logout.php" class="position"> <?php echo isset($lang['logout']) ? $lang['logout'] : 'Déconnexion'; ?> </a>
+          <a href="logout.php" class="position"> Déconnexion</a>
         <?php else: ?>
-          <a href="login.php" class="position"> <?php echo isset($lang['login']) ? $lang['login'] : 'Connexion'; ?> </a>
+          <a href="login.php" class="position"> Connexion </a>
         <?php endif; ?>
         </li>
 
@@ -187,8 +193,6 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
     </div>
   </div>
 </div>
-
-
 
 <!----------------------------------- Modal : me Newsletter sur la barre de navigation via bootstrap ---------------------------------------->
 <div class="modal fade" id="newsletterModal" tabindex="-1" aria-labelledby="newsletterModalLabel" aria-hidden="true">
