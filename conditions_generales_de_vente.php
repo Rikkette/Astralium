@@ -12,9 +12,9 @@ include "header.php";
         1. Présentation de l’Entreprise/Boutique <br>
         Le site Astralium.com est une boutique en ligne d'illustration ésotérique et artistique<br>
         géré par Marion Basselet en en tant que auto-entrepreneuse <br>
-        Avec le numero de siret suivant : 90444296900013 <br>
-        Et dont le siège sociale ce situe : 8 rue du parc, Résidence du parc, Bat 8, 27000 Evreux France. <br>
-        Email : astralium@gmail.com <br>
+        Avec le numero de siret suivant : <br>
+        Et dont le siège sociale ce situe :  <br>
+        Email :  <br>
 
         2. Coordonnées <br>
 
