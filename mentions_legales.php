@@ -13,9 +13,9 @@ include "header.php";
         1. Éditeur du site<br>
         Nom de l’artiste / Nom commercial : Marion – Astralium<br>
         Statut : Micro-entrepreneur<br>
-        SIRET : 90444296900013<br>
-        Adresse postale : 8 rue du parc, Résidence du parc, Bat 8, 27000 Evreux France.<br>
-        Email : astralium@gmail.com <br>
+        SIRET : <br>
+        Adresse postale : .<br>
+        Email :  <br>
         Réseaux sociaux : Instagram: astral.ium <br>
         Tiktok: @astralium<br>
         Etsy: Astralium<br>
